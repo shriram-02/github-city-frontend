@@ -16,7 +16,7 @@ export default function Scene() {
       <Lighting />
       <Ground />
       <RealBuildingGrid />
-      <gridHelper args={[100, 100]} />
+      <gridHelper args= {[100, 100]} />
       <OrbitControls />
     </Canvas>
   );

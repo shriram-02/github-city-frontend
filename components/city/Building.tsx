@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useCityStore } from "@/stores/cityStore";
+import { Text } from "@react-three/drei";
 
 type Props = {
   name: string;
@@ -21,34 +22,50 @@ export default function Building({
   );
 
   return (
-    <mesh
-      position={[
-        position[0],
-        height / 2,
-        position[2],
-      ]}
-      onPointerOver={() => setHovered(true)}
-      onPointerOut={() => setHovered(false)}
-      onClick={() =>
-        setSelectedBuilding({
-          name,
-          height,
-        })
-      }
-    >
-      <boxGeometry args={[1, height, 1]} />
-
-      <meshStandardMaterial
-        color={
-          hovered
-            ? "#00ff00"
-            : height > 7
-            ? "#00ffff"
-            : height > 4
-            ? "#ff00ff"
-            : "#6666ff"
+    <group>
+      <mesh
+        position={[
+          position[0],
+          height / 2,
+          position[2],
+        ]}
+        onPointerOver={() => setHovered(true)}
+        onPointerOut={() => setHovered(false)}
+        onClick={() =>
+          setSelectedBuilding({
+            name,
+            height,
+          })
         }
-      />
-    </mesh>
+      >
+        <boxGeometry args={[2, height, 2]}/>
+
+        <meshStandardMaterial
+          color={
+            hovered
+              ? "#00ff00"
+              : height > 7
+              ? "#00ffff"
+              : height > 4
+              ? "#ff00ff"
+              : "#6666ff"
+          }
+        />
+      </mesh>
+
+      <Text
+        position={[
+          position[0],
+          height + 1,
+          position[2],
+        ]}
+        fontSize={0.5}
+        maxWidth={5}
+        anchorX="center"
+        anchorY="middle"
+      >
+        {name}
+      </Text>
+    </group>
   );
 }
