@@ -1,35 +1,42 @@
+"use client";
+
+import { useState } from "react";
+
 import Building from "./Building";
 
-export default function BuildingGrid() {
-  const buildings = [];
+import { mockBuildings } from "@/data/mockBuildings";
 
-  for (let x = -10; x < 10; x++) {
-    for (let z = -10; z < 10; z++) {
-      buildings.push({
-        x,
-        z,
-        height:
-          Math.random() * 8 + 1,
-      });
-    }
-  }
+import BuildingInfo from "@/components/ui/BuildingInfo";
+
+export default function BuildingGrid() {
+  const [selected, setSelected] =
+    useState<any>(null);
 
   return (
     <>
-      {buildings.map(
-        (building, index) => (
+      {mockBuildings.map(
+        (building) => (
           <Building
-            key={index}
+            key={building.id}
+            name={building.name}
             position={[
-              building.x * 2,
+              building.x * 3,
               0,
-              building.z * 2,
+              building.z * 3,
             ]}
-            height={
-              building.height
+            height={building.height}
+            onSelect={() =>
+              setSelected(building)
             }
           />
         )
+      )}
+
+      {selected && (
+        <BuildingInfo
+          name={selected.name}
+          height={selected.height}
+        />
       )}
     </>
   );
