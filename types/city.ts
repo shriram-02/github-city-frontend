@@ -4,4 +4,6 @@ export interface CityBuilding {
   repos: number;
   followers: number;
   height: number;
+  width: number;
+  color: string;
 }

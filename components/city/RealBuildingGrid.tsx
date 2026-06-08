@@ -1,7 +1,6 @@
 "use client";
 
 import Building from "./Building";
-
 import { useGithubCity } from "@/hooks/useGithubCity";
 
 export default function RealBuildingGrid() {
@@ -17,8 +16,12 @@ export default function RealBuildingGrid() {
           <Building
             key={building.id}
             name={building.username}
-            position={[col * 8, 0, row * 8]}
+            position={[col * 12, 0, row * 12]}
             height={building.height}
+            width={building.width}
+            color={building.color}
+            followers={building.followers}
+            repos={building.repos}
           />
         );
       })}

@@ -6,3 +6,11 @@ export interface GithubUser {
   following: number;
   html_url: string;
 }
+
+export interface Building {
+  id: string;
+  username: string;
+  repos: number;
+  followers: number;
+  height: number;
+}

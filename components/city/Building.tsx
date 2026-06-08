@@ -8,12 +8,20 @@ type Props = {
   name: string;
   position: [number, number, number];
   height: number;
+  width: number;
+  color: string;
+  followers: number;
+  repos: number;
 };
 
 export default function Building({
   name,
   position,
   height,
+  width,
+  color,
+  followers,
+  repos,
 }: Props) {
   const [hovered, setHovered] = useState(false);
 
@@ -35,21 +43,21 @@ export default function Building({
           setSelectedBuilding({
             name,
             height,
+            followers,
+            repos,
           })
         }
       >
-        <boxGeometry args={[2, height, 2]}/>
+        <boxGeometry
+          args={[
+            width,
+            height,
+            width,
+          ]}
+        />
 
         <meshStandardMaterial
-          color={
-            hovered
-              ? "#00ff00"
-              : height > 7
-              ? "#00ffff"
-              : height > 4
-              ? "#ff00ff"
-              : "#6666ff"
-          }
+          color={hovered ? "#00ff00" : color}
         />
       </mesh>
 

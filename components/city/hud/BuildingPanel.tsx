@@ -2,6 +2,8 @@ type Props = {
   building: {
     name: string;
     height: number;
+    followers: number;
+    repos: number;
   } | null;
 };
 
@@ -29,6 +31,14 @@ export default function BuildingPanel({
 
       <p>
         Height: {building.height.toFixed(1)}
+      </p>
+
+      <p>
+        Followers: {building.followers}
+      </p>
+
+      <p>
+        Repositories: {building.repos}
       </p>
     </div>
   );

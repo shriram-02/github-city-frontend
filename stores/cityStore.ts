@@ -3,6 +3,8 @@ import { create } from "zustand";
 type Building = {
   name: string;
   height: number;
+  followers: number;
+  repos: number;
 };
 
 type CityStore = {

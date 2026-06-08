@@ -4,4 +4,4 @@ export const githubUsers = [
   "gaearon",
   "yyx990803",
   "sindresorhus",
-];
+] as const;
