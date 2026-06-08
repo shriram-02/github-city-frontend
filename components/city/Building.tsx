@@ -1,21 +1,24 @@
 "use client";
 
 import { useState } from "react";
+import { useCityStore } from "@/stores/cityStore";
 
 type Props = {
   name: string;
   position: [number, number, number];
   height: number;
-  onSelect: () => void;
 };
 
 export default function Building({
   name,
   position,
   height,
-  onSelect,
 }: Props) {
   const [hovered, setHovered] = useState(false);
+
+  const setSelectedBuilding = useCityStore(
+    (state) => state.setSelectedBuilding
+  );
 
   return (
     <mesh
@@ -26,7 +29,12 @@ export default function Building({
       ]}
       onPointerOver={() => setHovered(true)}
       onPointerOut={() => setHovered(false)}
-      onClick={onSelect}
+      onClick={() =>
+        setSelectedBuilding({
+          name,
+          height,
+        })
+      }
     >
       <boxGeometry args={[1, height, 1]} />
 
@@ -34,7 +42,11 @@ export default function Building({
         color={
           hovered
             ? "#00ff00"
-            : "#00ffff"
+            : height > 7
+            ? "#00ffff"
+            : height > 4
+            ? "#ff00ff"
+            : "#6666ff"
         }
       />
     </mesh>
