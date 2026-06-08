@@ -7,12 +7,15 @@ import Ground from "./city/Ground";
 import Lighting from "./city/Lighting";
 import BuildingGrid from "./city/BuildingGrid";
 
+import RealBuildingGrid
+from "./city/RealBuildingGrid";
+
 export default function Scene() {
   return (
     <Canvas camera={{ position: [20, 20, 20] }}>
       <Lighting />
       <Ground />
-      <BuildingGrid />
+      <RealBuildingGrid />
       <gridHelper args={[100, 100]} />
       <OrbitControls />
     </Canvas>
